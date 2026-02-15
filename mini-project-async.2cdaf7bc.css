@@ -51,4 +51,16 @@ input {
   overflow: hidden;
   box-shadow: 0 4px 10px #0000001a;
 }
+
+.load {
+  color: #fff;
+  cursor: pointer;
+  background-color: gray;
+  border: none;
+  border-radius: 10px;
+  margin: 20px auto;
+  padding: 12px 24px;
+  font-size: 16px;
+  display: block;
+}
 /*# sourceMappingURL=mini-project-async.2cdaf7bc.css.map */
