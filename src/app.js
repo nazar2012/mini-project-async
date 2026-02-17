@@ -21,10 +21,15 @@ async function getImg() {
 // getImg().then(res => renderImg(res))
 
 async function renderImg(arr) {
-  const item = arr.map(({ webformatURL, likes, views, comments, downloads, tags }) => {
+  const item = arr.map(({ webformatURL, largeImageURL, likes, views, comments, downloads, tags }) => {
     return `<li>
         <div class="photo-card">
-  <img class="image" src="${webformatURL}" alt="${tags}" />
+  <img 
+    class="image" 
+    src="${webformatURL}" 
+    data-large="${largeImageURL}"
+    alt="${tags}" 
+  />
   <div class="stats">
     <p class="stats-item">
       <i class="material-icons">thumb_up</i>
@@ -59,6 +64,32 @@ form.addEventListener("submit", async (event) => {
 loadBtn.addEventListener("click", async () => {
   await downloadImg(false)
 })
+
+list.addEventListener("click", event => {
+  if (!event.target.classList.contains("image")) return;
+
+  openModal(event.target.dataset.large, event.target.alt);
+});
+
+function openModal(src, alt) {
+  const instance = basicLightbox.create(`
+    <div class="custom-lightbox">
+      <button class="custom-close">&times;</button>
+      <img src="${src}" alt="${alt}" class="custom-image">
+    </div>
+  `);
+
+  instance.show();
+
+  document.querySelector(".custom-close")
+    .addEventListener("click", () => instance.close());
+
+  window.addEventListener("keydown", (e) => {
+    if (e.code === "Escape") {
+      instance.close();
+    }
+  });
+}
 
 async function downloadImg(isNewSearch) {
   if (isNewSearch) {

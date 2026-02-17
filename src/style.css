@@ -61,6 +61,40 @@ input {
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    display: block;
     margin: 20px auto;
+}
+
+.basicLightbox {
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(3px);
+}
+
+.custom-image {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 20px;
+}
+
+.custom-close {
+    position: absolute;
+    top: -15px;
+    right: -220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    margin: 0;
+    border: none;
+    border-radius: 50%;
+    background-color: transparent;
+    color: #fff;
+    cursor: pointer;
+    outline: none;
+    font-size: 30px;
+    padding-bottom: 6px;
+}
+
+.custom-close:hover {
+  background: rgba(255, 255, 255, 0.2);
 }
